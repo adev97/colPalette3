@@ -1,0 +1,43 @@
+---
+title: "colPalette_vignett"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{colPalette_vignett}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+**colPalette** is designed to help users create unique color palettes that are specific to the image analysis they are are conducting. Upon taking input as a series of hexadecimal color codes, this package will create a plain english version of each color, a color palette as stacked bars, and a color palette as a color wheel.
+
+Within this package, there are three functions that take a dataframe of hexadecimal color codes as input. 
+  crePalette(col) is designed to convert the hexadecimal color codes into a plain english version of each color. 
+  plotPalette(col, num) is designed to convert the hexadecimal color codes into a stacked color palette for easy visualization of the utilized colors.
+  plotCircPalette(col, num) is designed to convert the hexadecimal color codes into a color wheel for easy visualization of the relationships between each color. 
+
+
+
+```{r setup}
+library(colPalette)
+
+#example color set
+colors <- data.frame(HEX = c('#FF0000FF', '#80FF00FF', '#00FFFFFF', '#8000FFFF', '#E7298A'))
+num <- 5
+
+#convert hexadecimal color codes to plain language
+newPalette <- crePalette(colors)
+newPalette 
+
+#convert hexadecimal color codes into stacked color palette
+newStackedPalette <- plotPalette(colors, num)
+
+#convert hexadecimal color codes into color wheel palette
+newWheelPalette <- plotCircPalette(colors, num)
+
+```
